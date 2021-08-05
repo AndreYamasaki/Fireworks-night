@@ -18,11 +18,13 @@ class GameScene: SKScene {
     let bottomEdge = -22
     let rightEdge = 1024 + 22
     
+    var scoreLabel: SKLabelNode!
     var score = 0 {
         didSet{
-            //implementar
+            scoreLabel.text = "Score: \(score)"
         }
     }
+    var turnCount = 0
     
     override func didMove(to view: SKView) {
         
@@ -31,6 +33,13 @@ class GameScene: SKScene {
         background.blendMode = .replace
         background.zPosition = -1
         addChild(background)
+        
+        //Challenge 1: For an easy challenge try adding a score label that updates as the player’s score changes.
+        scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+                scoreLabel.text = "Score: 0"
+                scoreLabel.horizontalAlignmentMode = .right
+                scoreLabel.position = CGPoint(x: 980, y: 700)
+                addChild(scoreLabel)
         
         //A timer that repeats every 6 seconds
         gameTimer = Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(launchFireworks), userInfo: nil, repeats: true)
@@ -78,6 +87,12 @@ class GameScene: SKScene {
     }
     
     @objc func launchFireworks() {
+        
+        //Challenge 2: Make the game end after a certain number of launches. You will need to use the invalidate() method of Timer to stop it from repeating.
+        turnCount += 1
+                if turnCount > 10 {
+                    gameTimer?.invalidate()
+                }
         
         //this will be used as the distance value for the fireworks movement
         let movementAmount: CGFloat = 1800
@@ -178,7 +193,17 @@ class GameScene: SKScene {
     func explode(firework: SKNode) {
         if let emitter = SKEmitterNode(fileNamed: "explode") {
             emitter.position = firework.position
-            addChild(emitter)
+//            addChild(emitter)
+            
+            //Challenge 3: Use the waitForDuration and removeFromParent actions in a sequence to make sure explosion particle emitters are removed from the game scene when they are finished.
+            let showEffect = SKAction.run { [weak self] in
+                            self?.addChild(emitter)
+                        }
+                        let duration = SKAction.wait(forDuration: 2)
+                        let removal = SKAction.run {
+                            emitter.removeFromParent()
+                        }
+                        run(SKAction.sequence([showEffect, duration, removal]))
         }
         firework.removeFromParent()
     }
