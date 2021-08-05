@@ -9,23 +9,25 @@
 /* Begin PBXBuildFile section */
 		CE315CB126BC32CF007D257C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE315CB026BC32CF007D257C /* AppDelegate.swift */; };
 		CE315CB326BC32CF007D257C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE315CB226BC32CF007D257C /* GameScene.sks */; };
-		CE315CB526BC32CF007D257C /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE315CB426BC32CF007D257C /* Actions.sks */; };
 		CE315CB726BC32CF007D257C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE315CB626BC32CF007D257C /* GameScene.swift */; };
 		CE315CB926BC32CF007D257C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE315CB826BC32CF007D257C /* GameViewController.swift */; };
 		CE315CBC26BC32CF007D257C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE315CBA26BC32CF007D257C /* Main.storyboard */; };
 		CE315CBE26BC32D1007D257C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE315CBD26BC32D1007D257C /* Assets.xcassets */; };
+		CE315CC726BC3ACF007D257C /* explode.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE315CC526BC3ACF007D257C /* explode.sks */; };
+		CE315CC826BC3ACF007D257C /* fuse.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE315CC626BC3ACF007D257C /* fuse.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CE315CAD26BC32CF007D257C /* Project20.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project20.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE315CB026BC32CF007D257C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE315CB226BC32CF007D257C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		CE315CB426BC32CF007D257C /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		CE315CB626BC32CF007D257C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		CE315CB826BC32CF007D257C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		CE315CBB26BC32CF007D257C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE315CBD26BC32D1007D257C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE315CBF26BC32D1007D257C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE315CC526BC3ACF007D257C /* explode.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = explode.sks; sourceTree = "<group>"; };
+		CE315CC626BC3ACF007D257C /* fuse.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fuse.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,12 +62,13 @@
 			children = (
 				CE315CB026BC32CF007D257C /* AppDelegate.swift */,
 				CE315CB226BC32CF007D257C /* GameScene.sks */,
-				CE315CB426BC32CF007D257C /* Actions.sks */,
 				CE315CB626BC32CF007D257C /* GameScene.swift */,
 				CE315CB826BC32CF007D257C /* GameViewController.swift */,
 				CE315CBA26BC32CF007D257C /* Main.storyboard */,
 				CE315CBD26BC32D1007D257C /* Assets.xcassets */,
 				CE315CBF26BC32D1007D257C /* Info.plist */,
+				CE315CC526BC3ACF007D257C /* explode.sks */,
+				CE315CC626BC3ACF007D257C /* fuse.sks */,
 			);
 			path = Project20;
 			sourceTree = "<group>";
@@ -129,8 +132,9 @@
 			files = (
 				CE315CBC26BC32CF007D257C /* Main.storyboard in Resources */,
 				CE315CB326BC32CF007D257C /* GameScene.sks in Resources */,
+				CE315CC826BC3ACF007D257C /* fuse.sks in Resources */,
 				CE315CBE26BC32D1007D257C /* Assets.xcassets in Resources */,
-				CE315CB526BC32CF007D257C /* Actions.sks in Resources */,
+				CE315CC726BC3ACF007D257C /* explode.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,7 +295,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Andre.Project20;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -309,7 +313,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Andre.Project20;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
