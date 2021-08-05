@@ -119,6 +119,99 @@ class GameScene: SKScene {
     }
     
     func checkTouches(_ touches: Set<UITouch>) {
-        <#function body#>
+        
+        //get the first touch from touches set
+        guard let touch = touches.first else { return }
+        
+        let location = touch.location(in: self)
+        
+        //create node at location of touch
+        let nodesAtPoint = nodes(at: location)
+        
+        //checks if we can typecast constant node, if yes, we enter the loop
+        for case let node as SKSpriteNode in nodesAtPoint {
+            
+            //confirm if the node name contaims "firework"
+            guard node.name == "firework" else { continue }
+            
+            //for sknode in [sknode]
+            for parent in fireworks {
+                //gets first sknode and unwrap in const firework
+                guard let firework = parent.children.first as? SKSpriteNode else { continue }
+                
+                //change firework node back to normal if touch different color
+                if firework.name == "selected" && firework.color != node.color {
+                    firework.name = "firework"
+                    firework.colorBlendFactor = 1
+                }
+            }
+            //changes node name and color
+            node.name = "selected"
+            node.colorBlendFactor = 0
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        checkTouches(touches)
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesMoved(touches, with: event)
+        
+        checkTouches(touches)
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        
+        //Returns a sequence of pairs (n, x), where n represents a consecutive integer starting at zero and x represents an element of the sequence.
+        for (index, firework) in fireworks.enumerated().reversed() {
+            //remove firework if it passes .y position
+            if firework.position.y > 900 {
+                fireworks.remove(at: index)
+                firework.removeFromParent()
+            }
+        }
+    }
+    
+    func explode(firework: SKNode) {
+        if let emitter = SKEmitterNode(fileNamed: "explode") {
+            emitter.position = firework.position
+            addChild(emitter)
+        }
+        firework.removeFromParent()
+    }
+    
+    func explodeFireworks() {
+        
+        var numExploded = 0
+        
+        for(index, fireworkContainer) in fireworks.enumerated().reversed() {
+            guard let firework = fireworkContainer.children.first as? SKSpriteNode else { continue }
+            
+            //explodes fireworks with changed the color
+            if firework.name == "selected" {
+                explode(firework: fireworkContainer)
+                fireworks.remove(at: index)
+                numExploded += 1
+            }
+        }
+        
+        switch numExploded {
+        case 0:
+            // nothing – rubbish!
+            break
+        case 1:
+            score += 200
+        case 2:
+            score += 500
+        case 3:
+            score += 1500
+        case 4:
+            score += 2500
+        default:
+            score += 4000
+        }
     }
 }
